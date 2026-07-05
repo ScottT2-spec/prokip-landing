@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -25,6 +26,7 @@
       --white: #FFFFFF;
       --border: #E2E5EB;
       --success: #1A9E5C;
+      --danger: #E5484D;
       --shadow-sm: 0 1px 3px rgba(27,46,74,0.06);
       --shadow-md: 0 4px 16px rgba(27,46,74,0.08);
       --shadow-lg: 0 8px 32px rgba(27,46,74,0.12);
@@ -49,6 +51,18 @@
       margin: 0 auto;
       padding: 0 24px;
     }
+
+    /* Lucide icon base styles */
+    .lucide { display: inline-block; vertical-align: middle; flex-shrink: 0; }
+    .icon-inline { width: 18px; height: 18px; }
+    .icon-sm { width: 20px; height: 20px; }
+    .icon-md { width: 24px; height: 24px; }
+    .icon-lg { width: 28px; height: 28px; }
+    .icon-xl { width: 32px; height: 32px; }
+    .icon-hero { width: 36px; height: 36px; }
+
+    /* Filled icon style — thicker stroke + filled backgrounds */
+    .icon-filled { stroke-width: 2.5; }
 
     /* ── NAV ── */
     .nav {
@@ -150,6 +164,7 @@
       font-weight: 600;
       margin-bottom: 24px;
     }
+    .hero-badge .lucide { color: var(--accent); }
     .hero h1 {
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 52px;
@@ -200,6 +215,7 @@
       transform: translateY(-2px);
       box-shadow: 0 8px 24px rgba(232,121,43,0.35);
     }
+    .btn-primary .lucide { color: var(--white); }
     .btn-secondary {
       display: inline-flex;
       align-items: center;
@@ -226,8 +242,9 @@
       color: var(--text-light);
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
     }
+    .hero-note .lucide { color: var(--success); }
     .hero-visual {
       position: relative;
     }
@@ -260,7 +277,11 @@
       font-size: 16px;
       color: var(--primary);
       margin-left: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
+    .hero-card-title .lucide { color: var(--accent); }
     .hero-stat-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -272,7 +293,12 @@
       padding: 20px;
       text-align: center;
     }
-    .hero-stat-icon { font-size: 28px; margin-bottom: 8px; }
+    .hero-stat-icon {
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: center;
+    }
+    .hero-stat-icon .lucide { color: var(--accent); }
     .hero-stat-value {
       font-size: 28px;
       font-weight: 800;
@@ -309,7 +335,8 @@
       left: -20px;
       animation-delay: 1.5s;
     }
-    .hero-float .emoji { font-size: 20px; }
+    .hero-float .lucide { color: var(--accent); }
+    .hero-float.bottom-left .lucide { color: var(--success); }
     @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-8px); }
@@ -335,7 +362,7 @@
       font-weight: 600;
       color: var(--text-secondary);
     }
-    .trust-item .emoji { font-size: 20px; }
+    .trust-item .lucide { color: var(--accent); }
 
     /* ── SECTION STYLES ── */
     .section {
@@ -362,6 +389,7 @@
       color: var(--accent);
       margin-bottom: 16px;
     }
+    .section-label .lucide { color: var(--accent); }
     .section-header h2 {
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 40px;
@@ -372,6 +400,8 @@
       letter-spacing: -0.5px;
     }
     .section-dark .section-header h2 { color: var(--white); }
+    .section-dark .section-label { color: rgba(255,255,255,0.6); }
+    .section-dark .section-label .lucide { color: rgba(255,255,255,0.6); }
     .section-header p {
       font-size: 18px;
       color: var(--text-secondary);
@@ -407,8 +437,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 18px;
     }
+    .pain-icon .lucide { color: var(--danger); }
     .pain-visual {
       background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
       border-radius: var(--radius-xl);
@@ -441,6 +471,7 @@
       gap: 12px;
       opacity: 0.95;
     }
+    .pain-questions .lucide { color: rgba(255,255,255,0.7); }
 
     /* ── FEATURES / VISIBILITY ── */
     .vis-grid {
@@ -482,9 +513,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 26px;
       margin-bottom: 20px;
     }
+    .vis-icon .lucide { color: var(--accent); }
     .vis-card h3 {
       font-size: 18px;
       font-weight: 700;
@@ -517,7 +548,17 @@
       background: rgba(255,255,255,0.1);
       transform: translateY(-2px);
     }
-    .cost-emoji { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+    .cost-icon {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cost-icon .lucide { color: rgba(255,255,255,0.7); }
     .cost-card p {
       font-size: 15px;
       color: rgba(255,255,255,0.85);
@@ -564,8 +605,7 @@
       box-shadow: var(--shadow-md);
       transform: translateY(-2px);
     }
-    .imagine-emoji {
-      font-size: 28px;
+    .imagine-icon {
       flex-shrink: 0;
       width: 52px;
       height: 52px;
@@ -575,6 +615,7 @@
       align-items: center;
       justify-content: center;
     }
+    .imagine-icon .lucide { color: var(--accent); }
     .imagine-card p {
       font-size: 16px;
       color: var(--text);
@@ -608,10 +649,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--success);
-      font-size: 16px;
-      font-weight: 700;
     }
+    .demo-check .lucide { color: var(--success); }
     .demo-item p {
       font-size: 15px;
       color: var(--text);
@@ -636,10 +675,17 @@
       transform: translateY(-4px);
       box-shadow: var(--shadow-lg);
     }
-    .why-emoji {
-      font-size: 40px;
-      margin-bottom: 16px;
+    .why-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--accent-light);
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
     }
+    .why-icon .lucide { color: var(--accent); }
     .why-card h3 {
       font-size: 16px;
       font-weight: 700;
@@ -688,12 +734,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 28px;
       margin-bottom: 12px;
       backdrop-filter: blur(8px);
       border: 2px solid rgba(255,255,255,0.3);
       transition: all 0.3s;
     }
+    .video-play .lucide { color: var(--white); }
     .video-card:hover .video-play {
       background: var(--accent);
       border-color: var(--accent);
@@ -716,7 +762,11 @@
       letter-spacing: 1px;
       color: var(--accent);
       margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
+    .video-info .role .lucide { color: var(--accent); }
     .video-info p {
       font-size: 15px;
       color: var(--text);
@@ -756,7 +806,7 @@
       margin-bottom: 12px;
       line-height: 1.4;
     }
-    .testimonial-card p {
+    .testimonial-card > p {
       font-size: 15px;
       color: var(--text-secondary);
       line-height: 1.7;
@@ -777,8 +827,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
     }
+    .testimonial-avatar .lucide { color: var(--accent); }
     .testimonial-name {
       font-size: 14px;
       font-weight: 700;
@@ -789,11 +839,11 @@
       color: var(--text-light);
     }
     .stars {
-      color: #F59E0B;
-      font-size: 16px;
-      letter-spacing: 2px;
+      display: flex;
+      gap: 4px;
       margin-bottom: 16px;
     }
+    .stars .lucide { color: #F59E0B; fill: #F59E0B; }
 
     /* ── CTA BANNER ── */
     .cta-banner {
@@ -852,7 +902,7 @@
       color: rgba(255,255,255,0.65);
       font-weight: 500;
     }
-    .cta-feature .emoji { font-size: 16px; }
+    .cta-feature .lucide { color: rgba(255,255,255,0.65); }
 
     /* ── BOOKING FORM ── */
     .form-section {
@@ -902,7 +952,7 @@
       align-items: center;
       gap: 6px;
     }
-    .form-group label .emoji { font-size: 16px; }
+    .form-group label .lucide { color: var(--accent); }
     .form-group input,
     .form-group select,
     .form-group textarea {
@@ -947,6 +997,7 @@
       justify-content: center;
       gap: 6px;
     }
+    .form-note .lucide { color: var(--text-light); }
 
     /* ── FOOTER ── */
     .footer {
@@ -1065,15 +1116,15 @@
   <section class="hero">
     <div class="container hero-grid">
       <div>
-        <div class="hero-badge">🛡️ Built for African Businesses</div>
+        <div class="hero-badge"><i data-lucide="shield" class="icon-sm icon-filled"></i> Built for African Businesses</div>
         <p class="hero-sub">Trust Is Good. Clear Records Are Better.</p>
         <h1>Your Business Should Not Stop Working Because <em>You Are Not There</em></h1>
         <p>Your biggest threat may not be low sales — it may be what you cannot see. Prokip helps you track staff actions, stock movement, expenses, and profit so you can protect your business from theft, waste, and costly mistakes.</p>
         <div class="hero-actions">
-          <a href="#book" class="btn-primary">📅 Book My Free Demo Today</a>
-          <a href="#features" class="btn-secondary">📖 See How It Works</a>
+          <a href="#book" class="btn-primary"><i data-lucide="calendar" class="icon-sm icon-filled"></i> Book My Free Demo Today</a>
+          <a href="#features" class="btn-secondary"><i data-lucide="book-open" class="icon-sm icon-filled"></i> See How It Works</a>
         </div>
-        <p class="hero-note">✅ Free today &bull; No obligation &bull; Personalized for your business</p>
+        <p class="hero-note"><i data-lucide="circle-check" class="icon-sm icon-filled"></i> Free today &bull; No obligation &bull; Personalized for your business</p>
       </div>
       <div class="hero-visual">
         <div class="hero-card">
@@ -1081,36 +1132,36 @@
             <div class="hero-card-dot green"></div>
             <div class="hero-card-dot yellow"></div>
             <div class="hero-card-dot red"></div>
-            <span class="hero-card-title">📊 Business Dashboard</span>
+            <span class="hero-card-title"><i data-lucide="bar-chart-3" class="icon-sm icon-filled"></i> Business Dashboard</span>
           </div>
           <div class="hero-stat-grid">
             <div class="hero-stat">
-              <div class="hero-stat-icon">💰</div>
+              <div class="hero-stat-icon"><i data-lucide="banknote" class="icon-lg icon-filled"></i></div>
               <div class="hero-stat-value">₦2.4M</div>
               <div class="hero-stat-label">Today's Sales</div>
             </div>
             <div class="hero-stat">
-              <div class="hero-stat-icon">📦</div>
+              <div class="hero-stat-icon"><i data-lucide="package" class="icon-lg icon-filled"></i></div>
               <div class="hero-stat-value">1,247</div>
               <div class="hero-stat-label">Items in Stock</div>
             </div>
             <div class="hero-stat">
-              <div class="hero-stat-icon">👥</div>
+              <div class="hero-stat-icon"><i data-lucide="users" class="icon-lg icon-filled"></i></div>
               <div class="hero-stat-value">8</div>
               <div class="hero-stat-label">Active Staff</div>
             </div>
             <div class="hero-stat">
-              <div class="hero-stat-icon">📈</div>
+              <div class="hero-stat-icon"><i data-lucide="trending-up" class="icon-lg icon-filled"></i></div>
               <div class="hero-stat-value">+18%</div>
               <div class="hero-stat-label">Profit Growth</div>
             </div>
           </div>
         </div>
         <div class="hero-float top-right">
-          <span class="emoji">🔔</span> Sale recorded — Staff: Amina
+          <i data-lucide="bell-ring" class="icon-sm icon-filled"></i> Sale recorded — Staff: Amina
         </div>
         <div class="hero-float bottom-left">
-          <span class="emoji">✅</span> Stock verified — Branch 2
+          <i data-lucide="circle-check" class="icon-sm icon-filled"></i> Stock verified — Branch 2
         </div>
       </div>
     </div>
@@ -1120,12 +1171,12 @@
   <div class="trust-bar">
     <div class="container">
       <div class="trust-items">
-        <div class="trust-item"><span class="emoji">🏪</span> Shops & Retail</div>
-        <div class="trust-item"><span class="emoji">🛒</span> Supermarkets</div>
-        <div class="trust-item"><span class="emoji">💊</span> Pharmacies</div>
-        <div class="trust-item"><span class="emoji">🍽️</span> Restaurants</div>
-        <div class="trust-item"><span class="emoji">🏭</span> Wholesale & Distribution</div>
-        <div class="trust-item"><span class="emoji">🏢</span> Multi-Branch Operations</div>
+        <div class="trust-item"><i data-lucide="store" class="icon-sm icon-filled"></i> Shops & Retail</div>
+        <div class="trust-item"><i data-lucide="shopping-cart" class="icon-sm icon-filled"></i> Supermarkets</div>
+        <div class="trust-item"><i data-lucide="pill" class="icon-sm icon-filled"></i> Pharmacies</div>
+        <div class="trust-item"><i data-lucide="utensils" class="icon-sm icon-filled"></i> Restaurants</div>
+        <div class="trust-item"><i data-lucide="factory" class="icon-sm icon-filled"></i> Wholesale & Distribution</div>
+        <div class="trust-item"><i data-lucide="building-2" class="icon-sm icon-filled"></i> Multi-Branch Operations</div>
       </div>
     </div>
   </div>
@@ -1134,40 +1185,40 @@
   <section class="section" id="problem">
     <div class="container">
       <div class="section-header fade-up">
-        <div class="section-label">⚠️ The Real Problem</div>
+        <div class="section-label"><i data-lucide="alert-triangle" class="icon-sm icon-filled"></i> The Real Problem</div>
         <h2>Many African Business Owners Are Working Too Hard Inside Their Own Business</h2>
         <p>You open early. You close late. You check sales yourself. You monitor staff yourself. You answer every small question. You stay because you are not fully sure what will happen if you leave.</p>
       </div>
       <div class="pain-grid fade-up">
         <ul class="pain-list">
           <li>
-            <div class="pain-icon">😰</div>
+            <div class="pain-icon"><i data-lucide="alert-circle" class="icon-sm icon-filled"></i></div>
             <div>Staff say one thing. Stock records say another thing. Cash does not always match sales.</div>
           </li>
           <li>
-            <div class="pain-icon">📉</div>
+            <div class="pain-icon"><i data-lucide="trending-down" class="icon-sm icon-filled"></i></div>
             <div>Customers owe money, but records are not clear. Expenses are increasing, but nobody can explain why.</div>
           </li>
           <li>
-            <div class="pain-icon">📦</div>
+            <div class="pain-icon"><i data-lucide="package-x" class="icon-sm icon-filled"></i></div>
             <div>Goods enter the store, but nobody can confidently say what is left.</div>
           </li>
           <li>
-            <div class="pain-icon">📋</div>
+            <div class="pain-icon"><i data-lucide="clipboard-x" class="icon-sm icon-filled"></i></div>
             <div>Reports come late — or not at all. And when there is a problem, everybody has an explanation. But there is no clear record.</div>
           </li>
           <li>
-            <div class="pain-icon">💸</div>
+            <div class="pain-icon"><i data-lucide="wallet" class="icon-sm icon-filled"></i></div>
             <div>That is where many business owners lose money. Not because the business is bad — but because it depends too much on people and not enough on a system.</div>
           </li>
         </ul>
         <div class="pain-visual">
           <h3>And even after all that stress, you may still be asking:</h3>
           <ul class="pain-questions">
-            <li>❓ "Can I really trust what my staff are telling me?"</li>
-            <li>❓ "Is my stock complete?"</li>
-            <li>❓ "Are we making profit or just making sales?"</li>
-            <li>❓ "Where is the money going?"</li>
+            <li><i data-lucide="help-circle" class="icon-sm icon-filled"></i> "Can I really trust what my staff are telling me?"</li>
+            <li><i data-lucide="help-circle" class="icon-sm icon-filled"></i> "Is my stock complete?"</li>
+            <li><i data-lucide="help-circle" class="icon-sm icon-filled"></i> "Are we making profit or just making sales?"</li>
+            <li><i data-lucide="help-circle" class="icon-sm icon-filled"></i> "Where is the money going?"</li>
           </ul>
           <p style="margin-top: 24px;">If this sounds familiar, you are not alone. Many businesses are growing, but the owner is still trapped in daily operations.</p>
           <p style="font-weight: 700; font-size: 18px; opacity: 1;">Prokip helps you change that.</p>
@@ -1180,25 +1231,25 @@
   <section class="section section-alt">
     <div class="container">
       <div class="section-header fade-up">
-        <div class="section-label">🎯 Take Back Control</div>
+        <div class="section-label"><i data-lucide="target" class="icon-sm icon-filled"></i> Take Back Control</div>
         <h2>You Should Not Have to Live Inside Your Business to Control It</h2>
         <p>You should be able to step away and still know what is happening. You should be able to travel and still see sales. You should be able to open another branch without losing control of the first one.</p>
       </div>
       <div class="imagine-grid fade-up">
         <div class="imagine-card">
-          <div class="imagine-emoji">🔍</div>
+          <div class="imagine-icon"><i data-lucide="search" class="icon-md icon-filled"></i></div>
           <p>Know who sold what, who received payment, who gave a discount, who moved stock, who processed a return, and who made changes.</p>
         </div>
         <div class="imagine-card">
-          <div class="imagine-emoji">💹</div>
+          <div class="imagine-icon"><i data-lucide="trending-up" class="icon-md icon-filled"></i></div>
           <p>Know whether your business is actually making money — not just looking busy.</p>
         </div>
         <div class="imagine-card">
-          <div class="imagine-emoji">📊</div>
+          <div class="imagine-icon"><i data-lucide="bar-chart-3" class="icon-md icon-filled"></i></div>
           <p>Make decisions from real information, not from guesswork, calls, and staff explanations.</p>
         </div>
         <div class="imagine-card">
-          <div class="imagine-emoji">🌍</div>
+          <div class="imagine-icon"><i data-lucide="globe" class="icon-md icon-filled"></i></div>
           <p>That is the control Prokip is built to give African businesses.</p>
         </div>
       </div>
@@ -1209,60 +1260,60 @@
   <section class="section" id="features">
     <div class="container">
       <div class="section-header fade-up">
-        <div class="section-label">👁️ Full Visibility</div>
+        <div class="section-label"><i data-lucide="eye" class="icon-sm icon-filled"></i> Full Visibility</div>
         <h2>Prokip Helps You See What Is Really Happening</h2>
         <p>An all-in-one business management system for African businesses that want better control over sales, inventory, accounting, customers, staff, branches, purchases, expenses, and reports.</p>
       </div>
       <div class="vis-grid fade-up">
         <div class="vis-card">
-          <div class="vis-icon">🧾</div>
+          <div class="vis-icon"><i data-lucide="receipt" class="icon-lg icon-filled"></i></div>
           <h3>Sales Tracking</h3>
           <p>See what was sold, who sold it, and when. Every transaction is recorded with full accountability.</p>
         </div>
         <div class="vis-card">
-          <div class="vis-icon">📦</div>
+          <div class="vis-icon"><i data-lucide="package" class="icon-lg icon-filled"></i></div>
           <h3>Stock & Inventory</h3>
           <p>Know what is in stock, what is missing, who moved stock, and when to restock — across all locations.</p>
         </div>
         <div class="vis-card">
-          <div class="vis-icon">👤</div>
+          <div class="vis-icon"><i data-lucide="user-check" class="icon-lg icon-filled"></i></div>
           <h3>Staff Accountability</h3>
           <p>Track who gave discounts, who handled returns, who processed payments, and all staff activities.</p>
         </div>
         <div class="vis-card">
-          <div class="vis-icon">💳</div>
+          <div class="vis-icon"><i data-lucide="credit-card" class="icon-lg icon-filled"></i></div>
           <h3>Expenses & Profit</h3>
           <p>Monitor what expenses are reducing your profit and understand whether your business is truly profitable.</p>
         </div>
         <div class="vis-card">
-          <div class="vis-icon">🏦</div>
+          <div class="vis-icon"><i data-lucide="landmark" class="icon-lg icon-filled"></i></div>
           <h3>Customer & Supplier Records</h3>
           <p>Track who owes you money, manage supplier records, purchases, and payment balances clearly.</p>
         </div>
         <div class="vis-card">
-          <div class="vis-icon">🏬</div>
+          <div class="vis-icon"><i data-lucide="building" class="icon-lg icon-filled"></i></div>
           <h3>Multi-Branch View</h3>
           <p>See which branch is doing well and manage all your locations from one connected place.</p>
         </div>
         <div class="vis-card">
-          <div class="vis-icon">📑</div>
+          <div class="vis-icon"><i data-lucide="file-text" class="icon-lg icon-filled"></i></div>
           <h3>Accounting & Reports</h3>
           <p>Get the records your accountant needs. Cleaner data for reporting, planning, and legal tax compliance.</p>
         </div>
         <div class="vis-card">
-          <div class="vis-icon">🏷️</div>
+          <div class="vis-icon"><i data-lucide="tag" class="icon-lg icon-filled"></i></div>
           <h3>Product Performance</h3>
           <p>Know which products or services are performing best so you can make smarter business decisions.</p>
         </div>
         <div class="vis-card">
-          <div class="vis-icon">📱</div>
+          <div class="vis-icon"><i data-lucide="smartphone" class="icon-lg icon-filled"></i></div>
           <h3>Remote Monitoring</h3>
           <p>Check your phone or dashboard and see what is happening in your business — from anywhere.</p>
         </div>
       </div>
       <div style="text-align: center; margin-top: 48px;" class="fade-up">
         <p style="font-size: 18px; color: var(--text-secondary); max-width: 600px; margin: 0 auto 24px;">When you can see clearly, you can manage better. And when you manage better, you can grow with less stress.</p>
-        <a href="#book" class="btn-primary">📅 Book My Free Demo</a>
+        <a href="#book" class="btn-primary"><i data-lucide="calendar" class="icon-sm icon-filled"></i> Book My Free Demo</a>
       </div>
     </div>
   </section>
@@ -1271,48 +1322,48 @@
   <section class="section section-dark">
     <div class="container">
       <div class="section-header fade-up">
-        <div class="section-label" style="color: rgba(255,255,255,0.6);">💸 The Hidden Cost</div>
+        <div class="section-label"><i data-lucide="circle-dollar-sign" class="icon-sm icon-filled"></i> The Hidden Cost</div>
         <h2>The Hidden Cost of Running Without a Proper System</h2>
         <p>Every day your business runs without full visibility, small losses may continue.</p>
       </div>
       <div class="cost-grid fade-up">
         <div class="cost-card">
-          <span class="cost-emoji">🏷️</span>
+          <div class="cost-icon"><i data-lucide="tag" class="icon-sm icon-filled"></i></div>
           <p>A staff member gives unauthorized discounts.</p>
         </div>
         <div class="cost-card">
-          <span class="cost-emoji">📦</span>
+          <div class="cost-icon"><i data-lucide="package-minus" class="icon-sm icon-filled"></i></div>
           <p>Stock leaves without proper record.</p>
         </div>
         <div class="cost-card">
-          <span class="cost-emoji">📝</span>
+          <div class="cost-icon"><i data-lucide="file-x" class="icon-sm icon-filled"></i></div>
           <p>A customer debt is forgotten.</p>
         </div>
         <div class="cost-card">
-          <span class="cost-emoji">🧮</span>
+          <div class="cost-icon"><i data-lucide="calculator" class="icon-sm icon-filled"></i></div>
           <p>Expenses are recorded wrongly.</p>
         </div>
         <div class="cost-card">
-          <span class="cost-emoji">⏰</span>
+          <div class="cost-icon"><i data-lucide="clock" class="icon-sm icon-filled"></i></div>
           <p>A product sells fast, but you restock too late.</p>
         </div>
         <div class="cost-card">
-          <span class="cost-emoji">💰</span>
+          <div class="cost-icon"><i data-lucide="banknote" class="icon-sm icon-filled"></i></div>
           <p>Cash enters the business, but profit is still unclear.</p>
         </div>
         <div class="cost-card">
-          <span class="cost-emoji">🏬</span>
+          <div class="cost-icon"><i data-lucide="building-2" class="icon-sm icon-filled"></i></div>
           <p>One branch performs poorly, but you only discover weeks later.</p>
         </div>
         <div class="cost-card">
-          <span class="cost-emoji">📊</span>
+          <div class="cost-icon"><i data-lucide="bar-chart-3" class="icon-sm icon-filled"></i></div>
           <p>Your accountant struggles because records are scattered.</p>
         </div>
       </div>
       <div class="cost-bottom fade-up">
         <h3>These problems cost you money, time, and peace of mind.</h3>
         <p>A business that depends only on the owner cannot scale properly. Prokip helps you build a system that gives you visibility, accountability, and control.</p>
-        <a href="#book" class="btn-primary">🛡️ Build a Better System Today</a>
+        <a href="#book" class="btn-primary"><i data-lucide="shield" class="icon-sm icon-filled"></i> Build a Better System Today</a>
       </div>
     </div>
   </section>
@@ -1321,44 +1372,44 @@
   <section class="section section-alt">
     <div class="container">
       <div class="section-header fade-up">
-        <div class="section-label">✨ Imagine This</div>
+        <div class="section-label"><i data-lucide="sparkles" class="icon-sm icon-filled"></i> Imagine This</div>
         <h2>Imagine Running Your Business Like This</h2>
       </div>
       <div class="imagine-grid fade-up">
         <div class="imagine-card">
-          <div class="imagine-emoji">🚶</div>
+          <div class="imagine-icon"><i data-lucide="log-out" class="icon-md icon-filled"></i></div>
           <p>Leaving your shop and still knowing today's sales.</p>
         </div>
         <div class="imagine-card">
-          <div class="imagine-emoji">📱</div>
+          <div class="imagine-icon"><i data-lucide="smartphone" class="icon-md icon-filled"></i></div>
           <p>Checking your phone and seeing what is happening in your business right now.</p>
         </div>
         <div class="imagine-card">
-          <div class="imagine-emoji">📦</div>
+          <div class="imagine-icon"><i data-lucide="package-search" class="icon-md icon-filled"></i></div>
           <p>Knowing what is in stock before calling your staff.</p>
         </div>
         <div class="imagine-card">
-          <div class="imagine-emoji">🔎</div>
+          <div class="imagine-icon"><i data-lucide="scan-search" class="icon-md icon-filled"></i></div>
           <p>Seeing who is responsible for every sale, return, discount, or stock adjustment.</p>
         </div>
         <div class="imagine-card">
-          <div class="imagine-emoji">🔒</div>
+          <div class="imagine-icon"><i data-lucide="lock" class="icon-md icon-filled"></i></div>
           <p>Reducing theft because everyone knows activities are being tracked.</p>
         </div>
         <div class="imagine-card">
-          <div class="imagine-emoji">⚡</div>
+          <div class="imagine-icon"><i data-lucide="zap" class="icon-md icon-filled"></i></div>
           <p>Catching mistakes early before they become serious losses.</p>
         </div>
         <div class="imagine-card">
-          <div class="imagine-emoji">💹</div>
+          <div class="imagine-icon"><i data-lucide="circle-dollar-sign" class="icon-md icon-filled"></i></div>
           <p>Knowing whether you are making real profit, not just recording high sales.</p>
         </div>
         <div class="imagine-card">
-          <div class="imagine-emoji">🏢</div>
+          <div class="imagine-icon"><i data-lucide="building" class="icon-md icon-filled"></i></div>
           <p>Seeing all your branches from one place and giving your accountant cleaner records.</p>
         </div>
         <div class="imagine-card" style="grid-column: 1 / -1; text-align: center;">
-          <div class="imagine-emoji" style="margin: 0 auto;">🌟</div>
+          <div class="imagine-icon" style="margin: 0 auto;"><i data-lucide="sun" class="icon-md icon-filled"></i></div>
           <p>Finally having time to think about growth instead of sitting inside the business every day. <strong>That is what Prokip helps make possible.</strong></p>
         </div>
       </div>
@@ -1369,53 +1420,53 @@
   <section class="section" id="demo">
     <div class="container">
       <div class="section-header fade-up">
-        <div class="section-label">🎯 Your Free Demo</div>
+        <div class="section-label"><i data-lucide="target" class="icon-sm icon-filled"></i> Your Free Demo</div>
         <h2>What You Will See During Your Free Demo</h2>
         <p>This is not a general software presentation. Your demo is focused on your business, your challenges, and your growth goals.</p>
       </div>
       <div class="demo-list fade-up">
         <div class="demo-item">
-          <div class="demo-check">✓</div>
+          <div class="demo-check"><i data-lucide="check" class="icon-sm icon-filled"></i></div>
           <p>Reduce employee theft, mistakes, and unauthorized activities.</p>
         </div>
         <div class="demo-item">
-          <div class="demo-check">✓</div>
+          <div class="demo-check"><i data-lucide="check" class="icon-sm icon-filled"></i></div>
           <p>Know what is happening in your business even when you are not physically there.</p>
         </div>
         <div class="demo-item">
-          <div class="demo-check">✓</div>
+          <div class="demo-check"><i data-lucide="check" class="icon-sm icon-filled"></i></div>
           <p>Track who is responsible for every sale, payment, discount, return, and stock movement.</p>
         </div>
         <div class="demo-item">
-          <div class="demo-check">✓</div>
+          <div class="demo-check"><i data-lucide="check" class="icon-sm icon-filled"></i></div>
           <p>Know exactly what you have in stock across your shop, warehouse, or branches.</p>
         </div>
         <div class="demo-item">
-          <div class="demo-check">✓</div>
+          <div class="demo-check"><i data-lucide="check" class="icon-sm icon-filled"></i></div>
           <p>Understand whether your business is truly making profit or just making sales.</p>
         </div>
         <div class="demo-item">
-          <div class="demo-check">✓</div>
+          <div class="demo-check"><i data-lucide="check" class="icon-sm icon-filled"></i></div>
           <p>Monitor expenses and identify where money is being wasted.</p>
         </div>
         <div class="demo-item">
-          <div class="demo-check">✓</div>
+          <div class="demo-check"><i data-lucide="check" class="icon-sm icon-filled"></i></div>
           <p>Manage customer balances, supplier records, purchases, and payments more clearly.</p>
         </div>
         <div class="demo-item">
-          <div class="demo-check">✓</div>
+          <div class="demo-check"><i data-lucide="check" class="icon-sm icon-filled"></i></div>
           <p>See branch performance from one place.</p>
         </div>
         <div class="demo-item">
-          <div class="demo-check">✓</div>
+          <div class="demo-check"><i data-lucide="check" class="icon-sm icon-filled"></i></div>
           <p>Reduce your dependence on phone calls, notebooks, spreadsheets, and verbal reports.</p>
         </div>
         <div class="demo-item">
-          <div class="demo-check">✓</div>
+          <div class="demo-check"><i data-lucide="check" class="icon-sm icon-filled"></i></div>
           <p>Keep cleaner financial records for accounting, reporting, and legal tax compliance.</p>
         </div>
         <div class="demo-item" style="grid-column: 1 / -1;">
-          <div class="demo-check">✓</div>
+          <div class="demo-check"><i data-lucide="check" class="icon-sm icon-filled"></i></div>
           <p>Build a stronger system that allows your business to grow without depending on you 24/7.</p>
         </div>
       </div>
@@ -1429,27 +1480,27 @@
   <section class="section section-alt">
     <div class="container">
       <div class="section-header fade-up">
-        <div class="section-label">🤔 Why Business Owners Book This Demo</div>
+        <div class="section-label"><i data-lucide="message-circle-question" class="icon-sm icon-filled"></i> Why Business Owners Book This Demo</div>
         <h2>Business Owners Book This Demo Because They Are Tired of Guessing</h2>
       </div>
       <div class="why-grid fade-up">
         <div class="why-card">
-          <div class="why-emoji">💰</div>
+          <div class="why-icon"><i data-lucide="banknote" class="icon-xl icon-filled"></i></div>
           <h3>Know Where Money Goes</h3>
           <p>They want to know where their money is going and trust their numbers.</p>
         </div>
         <div class="why-card">
-          <div class="why-emoji">🛡️</div>
+          <div class="why-icon"><i data-lucide="shield-check" class="icon-xl icon-filled"></i></div>
           <h3>Reduce Losses</h3>
           <p>They want to reduce staff-related losses and stop depending on manual records.</p>
         </div>
         <div class="why-card">
-          <div class="why-emoji">🚀</div>
+          <div class="why-icon"><i data-lucide="rocket" class="icon-xl icon-filled"></i></div>
           <h3>Expand With Confidence</h3>
           <p>They want to expand without losing control and manage without sitting there all day.</p>
         </div>
         <div class="why-card">
-          <div class="why-emoji">😌</div>
+          <div class="why-icon"><i data-lucide="heart" class="icon-xl icon-filled"></i></div>
           <h3>Peace of Mind</h3>
           <p>They want peace of mind and to finally answer: "How can Prokip help my own business?"</p>
         </div>
@@ -1461,47 +1512,47 @@
   <section class="section" id="testimonials">
     <div class="container">
       <div class="section-header fade-up">
-        <div class="section-label">🎬 Video Testimonials</div>
+        <div class="section-label"><i data-lucide="clapperboard" class="icon-sm icon-filled"></i> Video Testimonials</div>
         <h2>Hear From Business Owners Using Prokip</h2>
       </div>
       <div class="video-grid fade-up">
         <div class="video-card">
           <div class="video-placeholder" id="video-1">
-            <div class="video-play">▶</div>
+            <div class="video-play"><i data-lucide="play" class="icon-lg icon-filled" style="fill: white;"></i></div>
             <span class="video-label">Watch Testimonial</span>
           </div>
           <div class="video-info">
-            <div class="role">🏪 Retail Business Owner</div>
+            <div class="role"><i data-lucide="store" class="icon-inline icon-filled"></i> Retail Business Owner</div>
             <p>"How Prokip helped us track sales, stock, and staff activities better."</p>
           </div>
         </div>
         <div class="video-card">
           <div class="video-placeholder" id="video-2">
-            <div class="video-play">▶</div>
+            <div class="video-play"><i data-lucide="play" class="icon-lg icon-filled" style="fill: white;"></i></div>
             <span class="video-label">Watch Testimonial</span>
           </div>
           <div class="video-info">
-            <div class="role">🛒 Supermarket Owner</div>
+            <div class="role"><i data-lucide="shopping-cart" class="icon-inline icon-filled"></i> Supermarket Owner</div>
             <p>"How Prokip helped us reduce stock losses and improve accountability."</p>
           </div>
         </div>
         <div class="video-card">
           <div class="video-placeholder" id="video-3">
-            <div class="video-play">▶</div>
+            <div class="video-play"><i data-lucide="play" class="icon-lg icon-filled" style="fill: white;"></i></div>
             <span class="video-label">Watch Testimonial</span>
           </div>
           <div class="video-info">
-            <div class="role">🏢 Multi-Branch Business Owner</div>
+            <div class="role"><i data-lucide="building-2" class="icon-inline icon-filled"></i> Multi-Branch Business Owner</div>
             <p>"How Prokip made it easier to manage different branches from one place."</p>
           </div>
         </div>
         <div class="video-card">
           <div class="video-placeholder" id="video-4">
-            <div class="video-play">▶</div>
+            <div class="video-play"><i data-lucide="play" class="icon-lg icon-filled" style="fill: white;"></i></div>
             <span class="video-label">Watch Testimonial</span>
           </div>
           <div class="video-info">
-            <div class="role">🌍 Growing African Business Owner</div>
+            <div class="role"><i data-lucide="globe" class="icon-inline icon-filled"></i> Growing African Business Owner</div>
             <p>"How Prokip gave us better visibility and reduced the stress of daily operations."</p>
           </div>
         </div>
@@ -1513,17 +1564,23 @@
   <section class="section section-alt">
     <div class="container">
       <div class="section-header fade-up">
-        <div class="section-label">💬 What Business Owners Are Saying</div>
+        <div class="section-label"><i data-lucide="message-square-quote" class="icon-sm icon-filled"></i> What Business Owners Are Saying</div>
         <h2>Real Stories From Real Business Owners</h2>
       </div>
       <div class="testimonial-grid fade-up">
         <div class="testimonial-card">
-          <div class="stars">★★★★★</div>
+          <div class="stars">
+            <i data-lucide="star" class="icon-sm"></i>
+            <i data-lucide="star" class="icon-sm"></i>
+            <i data-lucide="star" class="icon-sm"></i>
+            <i data-lucide="star" class="icon-sm"></i>
+            <i data-lucide="star" class="icon-sm"></i>
+          </div>
           <div class="testimonial-quote">"</div>
           <h4>"I no longer have to call every time to know what is happening."</h4>
           <p>Before Prokip, I had to depend on staff updates before knowing sales and stock. Now I can see reports clearly and make decisions faster.</p>
           <div class="testimonial-author">
-            <div class="testimonial-avatar">👤</div>
+            <div class="testimonial-avatar"><i data-lucide="user" class="icon-sm icon-filled"></i></div>
             <div>
               <div class="testimonial-name">Business Owner</div>
               <div class="testimonial-role">Retail Business</div>
@@ -1531,12 +1588,18 @@
           </div>
         </div>
         <div class="testimonial-card">
-          <div class="stars">★★★★★</div>
+          <div class="stars">
+            <i data-lucide="star" class="icon-sm"></i>
+            <i data-lucide="star" class="icon-sm"></i>
+            <i data-lucide="star" class="icon-sm"></i>
+            <i data-lucide="star" class="icon-sm"></i>
+            <i data-lucide="star" class="icon-sm"></i>
+          </div>
           <div class="testimonial-quote">"</div>
           <h4>"It helped us know who was responsible."</h4>
           <p>When stock was missing before, everybody had an explanation. With Prokip, sales, returns, and stock movements are tracked, so accountability improved.</p>
           <div class="testimonial-author">
-            <div class="testimonial-avatar">👤</div>
+            <div class="testimonial-avatar"><i data-lucide="user" class="icon-sm icon-filled"></i></div>
             <div>
               <div class="testimonial-name">Supermarket Owner</div>
               <div class="testimonial-role">Supermarket</div>
@@ -1544,12 +1607,18 @@
           </div>
         </div>
         <div class="testimonial-card">
-          <div class="stars">★★★★★</div>
+          <div class="stars">
+            <i data-lucide="star" class="icon-sm"></i>
+            <i data-lucide="star" class="icon-sm"></i>
+            <i data-lucide="star" class="icon-sm"></i>
+            <i data-lucide="star" class="icon-sm"></i>
+            <i data-lucide="star" class="icon-sm"></i>
+          </div>
           <div class="testimonial-quote">"</div>
           <h4>"I can now leave the business and still monitor things."</h4>
           <p>Before, I was always inside the shop because I did not fully trust the process. Prokip gave me more visibility, and that reduced a lot of stress.</p>
           <div class="testimonial-author">
-            <div class="testimonial-avatar">👤</div>
+            <div class="testimonial-avatar"><i data-lucide="user" class="icon-sm icon-filled"></i></div>
             <div>
               <div class="testimonial-name">Retail & Distribution Owner</div>
               <div class="testimonial-role">Retail & Distribution</div>
@@ -1557,12 +1626,18 @@
           </div>
         </div>
         <div class="testimonial-card">
-          <div class="stars">★★★★★</div>
+          <div class="stars">
+            <i data-lucide="star" class="icon-sm"></i>
+            <i data-lucide="star" class="icon-sm"></i>
+            <i data-lucide="star" class="icon-sm"></i>
+            <i data-lucide="star" class="icon-sm"></i>
+            <i data-lucide="star" class="icon-sm"></i>
+          </div>
           <div class="testimonial-quote">"</div>
           <h4>"Our records became cleaner."</h4>
           <p>Expenses, sales, purchases, and reports are now easier to track. It has helped our accountant and made business planning easier.</p>
           <div class="testimonial-author">
-            <div class="testimonial-avatar">👤</div>
+            <div class="testimonial-avatar"><i data-lucide="user" class="icon-sm icon-filled"></i></div>
             <div>
               <div class="testimonial-name">Wholesale Owner</div>
               <div class="testimonial-role">Wholesale Business</div>
@@ -1578,11 +1653,11 @@
     <div class="container fade-up">
       <h2>If Your Business Depends on You 24/7, It Is Time to Build a Better System</h2>
       <p>A business should give you freedom, not trap you. With the right system, you can have more control, better records, stronger accountability, and more confidence to grow.</p>
-      <a href="#book" class="btn-primary">📅 Book Your Free Demo Today</a>
+      <a href="#book" class="btn-primary"><i data-lucide="calendar" class="icon-sm icon-filled"></i> Book Your Free Demo Today</a>
       <div class="cta-features">
-        <div class="cta-feature"><span class="emoji">✅</span> Free today</div>
-        <div class="cta-feature"><span class="emoji">🤝</span> No obligation</div>
-        <div class="cta-feature"><span class="emoji">🎯</span> Tailored to your business</div>
+        <div class="cta-feature"><i data-lucide="circle-check" class="icon-sm icon-filled"></i> Free today</div>
+        <div class="cta-feature"><i data-lucide="handshake" class="icon-sm icon-filled"></i> No obligation</div>
+        <div class="cta-feature"><i data-lucide="target" class="icon-sm icon-filled"></i> Tailored to your business</div>
       </div>
     </div>
   </section>
@@ -1592,30 +1667,30 @@
     <div class="container">
       <div class="form-wrapper fade-up">
         <div class="form-header">
-          <div class="section-label">📋 Book Your Demo</div>
+          <div class="section-label"><i data-lucide="clipboard-list" class="icon-sm icon-filled"></i> Book Your Demo</div>
           <h2>Book Your Free Personalized Demo Today</h2>
           <p>Free today. No obligation. Tailored to your business.</p>
         </div>
         <form id="bookingForm" onsubmit="handleSubmit(event)">
           <div class="form-grid">
             <div class="form-group">
-              <label><span class="emoji">👤</span> Full Name</label>
+              <label><i data-lucide="user" class="icon-inline icon-filled"></i> Full Name</label>
               <input type="text" name="fullName" placeholder="Enter your full name" required>
             </div>
             <div class="form-group">
-              <label><span class="emoji">🏢</span> Business Name</label>
+              <label><i data-lucide="building-2" class="icon-inline icon-filled"></i> Business Name</label>
               <input type="text" name="businessName" placeholder="Enter your business name" required>
             </div>
             <div class="form-group">
-              <label><span class="emoji">📞</span> Phone Number</label>
+              <label><i data-lucide="phone" class="icon-inline icon-filled"></i> Phone Number</label>
               <input type="tel" name="phone" placeholder="+234 800 000 0000" required>
             </div>
             <div class="form-group">
-              <label><span class="emoji">📧</span> Email Address</label>
+              <label><i data-lucide="mail" class="icon-inline icon-filled"></i> Email Address</label>
               <input type="email" name="email" placeholder="you@business.com" required>
             </div>
             <div class="form-group">
-              <label><span class="emoji">🏪</span> Type of Business</label>
+              <label><i data-lucide="store" class="icon-inline icon-filled"></i> Type of Business</label>
               <select name="businessType" required>
                 <option value="" disabled selected>Select your business type</option>
                 <option>Retail / Shop</option>
@@ -1632,7 +1707,7 @@
               </select>
             </div>
             <div class="form-group">
-              <label><span class="emoji">📍</span> Number of Locations or Branches</label>
+              <label><i data-lucide="map-pin" class="icon-inline icon-filled"></i> Number of Locations or Branches</label>
               <select name="locations" required>
                 <option value="" disabled selected>Select number</option>
                 <option>1 location</option>
@@ -1643,15 +1718,15 @@
               </select>
             </div>
             <div class="form-group full">
-              <label><span class="emoji">🎯</span> Biggest Challenge Right Now</label>
+              <label><i data-lucide="target" class="icon-inline icon-filled"></i> Biggest Challenge Right Now</label>
               <textarea name="challenge" placeholder="Tell us what challenge you are facing in your business right now..." rows="3"></textarea>
             </div>
             <div class="form-group">
-              <label><span class="emoji">📅</span> Preferred Demo Date</label>
+              <label><i data-lucide="calendar" class="icon-inline icon-filled"></i> Preferred Demo Date</label>
               <input type="date" name="demoDate" required>
             </div>
             <div class="form-group">
-              <label><span class="emoji">🕐</span> Preferred Demo Time</label>
+              <label><i data-lucide="clock" class="icon-inline icon-filled"></i> Preferred Demo Time</label>
               <select name="demoTime" required>
                 <option value="" disabled selected>Select preferred time</option>
                 <option>9:00 AM</option>
@@ -1667,12 +1742,12 @@
             </div>
           </div>
           <div class="form-submit">
-            <button type="submit" class="btn-primary">🚀 Show Me How to Run My Business with Less Stress</button>
+            <button type="submit" class="btn-primary"><i data-lucide="rocket" class="icon-sm icon-filled"></i> Show Me How to Run My Business with Less Stress</button>
           </div>
-          <p class="form-note">🔒 Your information is secure and will only be used to schedule your demo.</p>
+          <p class="form-note"><i data-lucide="lock" class="icon-inline icon-filled"></i> Your information is secure and will only be used to schedule your demo.</p>
         </form>
         <div id="formSuccess" style="display: none; text-align: center; padding: 40px 0;">
-          <div style="font-size: 64px; margin-bottom: 16px;">🎉</div>
+          <div style="margin-bottom: 16px;"><i data-lucide="circle-check-big" class="icon-filled" style="width: 64px; height: 64px; color: var(--success);"></i></div>
           <h3 style="font-size: 24px; font-weight: 700; color: var(--primary); margin-bottom: 12px;">Demo Booked Successfully!</h3>
           <p style="font-size: 16px; color: var(--text-secondary); line-height: 1.7;">Thank you! Our team will reach out to confirm your personalized demo. We look forward to showing you how Prokip can help your business grow.</p>
         </div>
@@ -1696,6 +1771,9 @@
   </footer>
 
   <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
     // Nav scroll effect
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
@@ -1728,8 +1806,9 @@
       e.preventDefault();
       document.getElementById('bookingForm').style.display = 'none';
       document.getElementById('formSuccess').style.display = 'block';
-      // Scroll to success message
       document.getElementById('formSuccess').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // Re-render icons in success message
+      lucide.createIcons();
     }
 
     // Set min date for demo date picker
