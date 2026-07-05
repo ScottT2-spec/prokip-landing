@@ -1,0 +1,1745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prokip — Take Back Control of Your Business</title>
+  <meta name="description" content="Prokip helps African business owners track sales, inventory, staff, expenses, and profit from one connected system. Book your free demo today.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --primary: #1B2E4A;
+      --primary-light: #2A4470;
+      --accent: #E8792B;
+      --accent-hover: #D4691F;
+      --accent-light: #FFF3EB;
+      --surface: #F7F8FA;
+      --surface-alt: #EEF1F6;
+      --text: #1A1D23;
+      --text-secondary: #5A6175;
+      --text-light: #8891A5;
+      --white: #FFFFFF;
+      --border: #E2E5EB;
+      --success: #1A9E5C;
+      --shadow-sm: 0 1px 3px rgba(27,46,74,0.06);
+      --shadow-md: 0 4px 16px rgba(27,46,74,0.08);
+      --shadow-lg: 0 8px 32px rgba(27,46,74,0.12);
+      --shadow-xl: 0 16px 48px rgba(27,46,74,0.16);
+      --radius: 12px;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+    }
+
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 0.3s;
+    }
+    .nav.scrolled { box-shadow: var(--shadow-md); }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .logo {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 26px;
+      color: var(--primary);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--primary); }
+    .nav-cta {
+      background: var(--accent);
+      color: var(--white) !important;
+      padding: 10px 24px;
+      border-radius: 10px;
+      font-weight: 600 !important;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .nav-cta:hover { background: var(--accent-hover); transform: translateY(-1px); }
+
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+    .mobile-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--primary);
+      margin: 6px 0;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 140px 0 100px;
+      background: linear-gradient(165deg, #F0F4FA 0%, #FFFFFF 40%, #FFF8F3 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      right: -200px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(232,121,43,0.06) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-light);
+      color: var(--accent);
+      padding: 8px 18px;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 52px;
+      font-weight: 800;
+      line-height: 1.12;
+      color: var(--primary);
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+    .hero-sub {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 16px;
+    }
+    .hero p {
+      font-size: 18px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin-bottom: 36px;
+      max-width: 520px;
+    }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--accent);
+      color: var(--white);
+      padding: 16px 32px;
+      border-radius: var(--radius);
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s;
+      box-shadow: 0 4px 16px rgba(232,121,43,0.3);
+    }
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(232,121,43,0.35);
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--white);
+      color: var(--primary);
+      padding: 16px 32px;
+      border-radius: var(--radius);
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 2px solid var(--border);
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .btn-secondary:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .hero-note {
+      margin-top: 20px;
+      font-size: 14px;
+      color: var(--text-light);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hero-visual {
+      position: relative;
+    }
+    .hero-card {
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-xl);
+      padding: 40px;
+      position: relative;
+      border: 1px solid var(--border);
+    }
+    .hero-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-card-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .hero-card-dot.green { background: #34D399; }
+    .hero-card-dot.yellow { background: #FBBF24; }
+    .hero-card-dot.red { background: #F87171; }
+    .hero-card-title {
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--primary);
+      margin-left: 8px;
+    }
+    .hero-stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .hero-stat {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 20px;
+      text-align: center;
+    }
+    .hero-stat-icon { font-size: 28px; margin-bottom: 8px; }
+    .hero-stat-value {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--primary);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .hero-stat-label {
+      font-size: 13px;
+      color: var(--text-light);
+      font-weight: 500;
+      margin-top: 4px;
+    }
+    .hero-float {
+      position: absolute;
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lg);
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--primary);
+      border: 1px solid var(--border);
+      animation: float 3s ease-in-out infinite;
+    }
+    .hero-float.top-right {
+      top: -16px;
+      right: -20px;
+    }
+    .hero-float.bottom-left {
+      bottom: -16px;
+      left: -20px;
+      animation-delay: 1.5s;
+    }
+    .hero-float .emoji { font-size: 20px; }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      padding: 48px 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+    .trust-items {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+    .trust-item .emoji { font-size: 20px; }
+
+    /* ── SECTION STYLES ── */
+    .section {
+      padding: 100px 0;
+    }
+    .section-alt { background: var(--surface); }
+    .section-dark {
+      background: var(--primary);
+      color: var(--white);
+    }
+    .section-header {
+      text-align: center;
+      max-width: 780px;
+      margin: 0 auto 64px;
+    }
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .section-header h2 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 40px;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1.2;
+      margin-bottom: 20px;
+      letter-spacing: -0.5px;
+    }
+    .section-dark .section-header h2 { color: var(--white); }
+    .section-header p {
+      font-size: 18px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+    .section-dark .section-header p { color: rgba(255,255,255,0.7); }
+
+    /* ── PAIN POINTS ── */
+    .pain-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .pain-list { list-style: none; }
+    .pain-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 16px;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .pain-list li:last-child { border-bottom: none; }
+    .pain-icon {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      background: #FEF2F2;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+    .pain-visual {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      border-radius: var(--radius-xl);
+      padding: 48px;
+      color: var(--white);
+    }
+    .pain-visual h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 24px;
+      line-height: 1.3;
+    }
+    .pain-visual p {
+      font-size: 16px;
+      opacity: 0.85;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .pain-questions {
+      list-style: none;
+      margin-top: 24px;
+    }
+    .pain-questions li {
+      padding: 12px 0;
+      font-size: 16px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0.95;
+    }
+
+    /* ── FEATURES / VISIBILITY ── */
+    .vis-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .vis-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 36px 28px;
+      border: 1px solid var(--border);
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .vis-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--accent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .vis-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: transparent;
+    }
+    .vis-card:hover::before { opacity: 1; }
+    .vis-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--accent-light);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+    .vis-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    .vis-card p {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    /* ── HIDDEN COST ── */
+    .cost-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .cost-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      transition: all 0.3s;
+    }
+    .cost-card:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-2px);
+    }
+    .cost-emoji { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+    .cost-card p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.6;
+    }
+    .cost-bottom {
+      text-align: center;
+      margin-top: 56px;
+      padding-top: 48px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .cost-bottom h3 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .cost-bottom p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 32px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── IMAGINE ── */
+    .imagine-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .imagine-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      border: 1px solid var(--border);
+      transition: all 0.3s;
+    }
+    .imagine-card:hover {
+      border-color: var(--accent);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+    .imagine-emoji {
+      font-size: 28px;
+      flex-shrink: 0;
+      width: 52px;
+      height: 52px;
+      background: var(--accent-light);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .imagine-card p {
+      font-size: 16px;
+      color: var(--text);
+      line-height: 1.6;
+      font-weight: 500;
+    }
+
+    /* ── DEMO SECTION ── */
+    .demo-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .demo-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 20px;
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+    .demo-check {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      background: #ECFDF5;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--success);
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .demo-item p {
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── WHY BOOK ── */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .why-card {
+      text-align: center;
+      padding: 36px 24px;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      transition: all 0.3s;
+    }
+    .why-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+    .why-emoji {
+      font-size: 40px;
+      margin-bottom: 16px;
+    }
+    .why-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    .why-card p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ── VIDEO TESTIMONIALS ── */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+    .video-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: all 0.3s;
+    }
+    .video-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+    .video-placeholder {
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      position: relative;
+      cursor: pointer;
+    }
+    .video-play {
+      width: 72px;
+      height: 72px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 12px;
+      backdrop-filter: blur(8px);
+      border: 2px solid rgba(255,255,255,0.3);
+      transition: all 0.3s;
+    }
+    .video-card:hover .video-play {
+      background: var(--accent);
+      border-color: var(--accent);
+      transform: scale(1.1);
+    }
+    .video-label {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      opacity: 0.8;
+    }
+    .video-info {
+      padding: 24px;
+    }
+    .video-info .role {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .video-info p {
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.5;
+      font-style: italic;
+    }
+
+    /* ── TEXT TESTIMONIALS ── */
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .testimonial-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      border: 1px solid var(--border);
+      position: relative;
+      transition: all 0.3s;
+    }
+    .testimonial-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
+    }
+    .testimonial-quote {
+      font-size: 48px;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 8px;
+      font-family: Georgia, serif;
+    }
+    .testimonial-card h4 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+    .testimonial-card p {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+    .testimonial-avatar {
+      width: 44px;
+      height: 44px;
+      background: var(--accent-light);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+    .testimonial-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .testimonial-role {
+      font-size: 13px;
+      color: var(--text-light);
+    }
+    .stars {
+      color: #F59E0B;
+      font-size: 16px;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      padding: 100px 0;
+      background: linear-gradient(135deg, var(--primary) 0%, #0F1D33 100%);
+      color: var(--white);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(232,121,43,0.08) 0%, transparent 60%);
+      border-radius: 50%;
+    }
+    .cta-banner h2 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 42px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      position: relative;
+      letter-spacing: -0.5px;
+    }
+    .cta-banner p {
+      font-size: 18px;
+      color: rgba(255,255,255,0.75);
+      max-width: 620px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+      position: relative;
+    }
+    .cta-banner .btn-primary {
+      font-size: 18px;
+      padding: 18px 40px;
+      position: relative;
+    }
+    .cta-features {
+      display: flex;
+      justify-content: center;
+      gap: 36px;
+      margin-top: 36px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+    .cta-feature {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.65);
+      font-weight: 500;
+    }
+    .cta-feature .emoji { font-size: 16px; }
+
+    /* ── BOOKING FORM ── */
+    .form-section {
+      padding: 100px 0;
+      background: var(--surface);
+    }
+    .form-wrapper {
+      max-width: 720px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      padding: 56px 48px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+    }
+    .form-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .form-header h2 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+    .form-header p {
+      font-size: 16px;
+      color: var(--text-secondary);
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .form-group label .emoji { font-size: 16px; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 14px 16px;
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      font-size: 15px;
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(232,121,43,0.1);
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--text-light);
+    }
+    .form-submit {
+      text-align: center;
+      margin-top: 32px;
+    }
+    .form-submit .btn-primary {
+      width: 100%;
+      justify-content: center;
+      font-size: 17px;
+      padding: 18px 36px;
+    }
+    .form-note {
+      text-align: center;
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--text-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      padding: 48px 0;
+      background: var(--primary);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 24px;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .footer-logo span { color: var(--accent); }
+    .footer p { font-size: 14px; line-height: 1.7; }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 20px;
+      list-style: none;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--white); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .hero h1 { font-size: 42px; }
+      .vis-grid { grid-template-columns: repeat(2, 1fr); }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .mobile-toggle { display: block; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        padding: 24px;
+        border-bottom: 1px solid var(--border);
+        box-shadow: var(--shadow-lg);
+        gap: 16px;
+      }
+      .hero { padding: 110px 0 60px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero h1 { font-size: 34px; }
+      .hero p { font-size: 16px; }
+      .hero-visual { order: -1; }
+      .pain-grid { grid-template-columns: 1fr; }
+      .vis-grid { grid-template-columns: 1fr; }
+      .cost-grid { grid-template-columns: 1fr; }
+      .imagine-grid { grid-template-columns: 1fr; }
+      .demo-list { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr 1fr; }
+      .video-grid { grid-template-columns: 1fr; }
+      .testimonial-grid { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-wrapper { padding: 36px 24px; }
+      .section { padding: 64px 0; }
+      .section-header h2 { font-size: 30px; }
+      .cta-banner h2 { font-size: 30px; }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .btn-primary, .btn-secondary { justify-content: center; }
+      .cta-features { flex-direction: column; align-items: center; gap: 12px; }
+    }
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 28px; }
+      .hero-stat-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .trust-items { flex-direction: column; align-items: center; gap: 16px; }
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="#" class="logo">Pro<span>kip</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#problem">The Problem</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#demo">Free Demo</a></li>
+        <li><a href="#book" class="nav-cta">Book Demo</a></li>
+      </ul>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-badge">🛡️ Built for African Businesses</div>
+        <p class="hero-sub">Trust Is Good. Clear Records Are Better.</p>
+        <h1>Your Business Should Not Stop Working Because <em>You Are Not There</em></h1>
+        <p>Your biggest threat may not be low sales — it may be what you cannot see. Prokip helps you track staff actions, stock movement, expenses, and profit so you can protect your business from theft, waste, and costly mistakes.</p>
+        <div class="hero-actions">
+          <a href="#book" class="btn-primary">📅 Book My Free Demo Today</a>
+          <a href="#features" class="btn-secondary">📖 See How It Works</a>
+        </div>
+        <p class="hero-note">✅ Free today &bull; No obligation &bull; Personalized for your business</p>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-card-header">
+            <div class="hero-card-dot green"></div>
+            <div class="hero-card-dot yellow"></div>
+            <div class="hero-card-dot red"></div>
+            <span class="hero-card-title">📊 Business Dashboard</span>
+          </div>
+          <div class="hero-stat-grid">
+            <div class="hero-stat">
+              <div class="hero-stat-icon">💰</div>
+              <div class="hero-stat-value">₦2.4M</div>
+              <div class="hero-stat-label">Today's Sales</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-icon">📦</div>
+              <div class="hero-stat-value">1,247</div>
+              <div class="hero-stat-label">Items in Stock</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-icon">👥</div>
+              <div class="hero-stat-value">8</div>
+              <div class="hero-stat-label">Active Staff</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-icon">📈</div>
+              <div class="hero-stat-value">+18%</div>
+              <div class="hero-stat-label">Profit Growth</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-float top-right">
+          <span class="emoji">🔔</span> Sale recorded — Staff: Amina
+        </div>
+        <div class="hero-float bottom-left">
+          <span class="emoji">✅</span> Stock verified — Branch 2
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="container">
+      <div class="trust-items">
+        <div class="trust-item"><span class="emoji">🏪</span> Shops & Retail</div>
+        <div class="trust-item"><span class="emoji">🛒</span> Supermarkets</div>
+        <div class="trust-item"><span class="emoji">💊</span> Pharmacies</div>
+        <div class="trust-item"><span class="emoji">🍽️</span> Restaurants</div>
+        <div class="trust-item"><span class="emoji">🏭</span> Wholesale & Distribution</div>
+        <div class="trust-item"><span class="emoji">🏢</span> Multi-Branch Operations</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE PROBLEM -->
+  <section class="section" id="problem">
+    <div class="container">
+      <div class="section-header fade-up">
+        <div class="section-label">⚠️ The Real Problem</div>
+        <h2>Many African Business Owners Are Working Too Hard Inside Their Own Business</h2>
+        <p>You open early. You close late. You check sales yourself. You monitor staff yourself. You answer every small question. You stay because you are not fully sure what will happen if you leave.</p>
+      </div>
+      <div class="pain-grid fade-up">
+        <ul class="pain-list">
+          <li>
+            <div class="pain-icon">😰</div>
+            <div>Staff say one thing. Stock records say another thing. Cash does not always match sales.</div>
+          </li>
+          <li>
+            <div class="pain-icon">📉</div>
+            <div>Customers owe money, but records are not clear. Expenses are increasing, but nobody can explain why.</div>
+          </li>
+          <li>
+            <div class="pain-icon">📦</div>
+            <div>Goods enter the store, but nobody can confidently say what is left.</div>
+          </li>
+          <li>
+            <div class="pain-icon">📋</div>
+            <div>Reports come late — or not at all. And when there is a problem, everybody has an explanation. But there is no clear record.</div>
+          </li>
+          <li>
+            <div class="pain-icon">💸</div>
+            <div>That is where many business owners lose money. Not because the business is bad — but because it depends too much on people and not enough on a system.</div>
+          </li>
+        </ul>
+        <div class="pain-visual">
+          <h3>And even after all that stress, you may still be asking:</h3>
+          <ul class="pain-questions">
+            <li>❓ "Can I really trust what my staff are telling me?"</li>
+            <li>❓ "Is my stock complete?"</li>
+            <li>❓ "Are we making profit or just making sales?"</li>
+            <li>❓ "Where is the money going?"</li>
+          </ul>
+          <p style="margin-top: 24px;">If this sounds familiar, you are not alone. Many businesses are growing, but the owner is still trapped in daily operations.</p>
+          <p style="font-weight: 700; font-size: 18px; opacity: 1;">Prokip helps you change that.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- YOU DESERVE CONTROL -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header fade-up">
+        <div class="section-label">🎯 Take Back Control</div>
+        <h2>You Should Not Have to Live Inside Your Business to Control It</h2>
+        <p>You should be able to step away and still know what is happening. You should be able to travel and still see sales. You should be able to open another branch without losing control of the first one.</p>
+      </div>
+      <div class="imagine-grid fade-up">
+        <div class="imagine-card">
+          <div class="imagine-emoji">🔍</div>
+          <p>Know who sold what, who received payment, who gave a discount, who moved stock, who processed a return, and who made changes.</p>
+        </div>
+        <div class="imagine-card">
+          <div class="imagine-emoji">💹</div>
+          <p>Know whether your business is actually making money — not just looking busy.</p>
+        </div>
+        <div class="imagine-card">
+          <div class="imagine-emoji">📊</div>
+          <p>Make decisions from real information, not from guesswork, calls, and staff explanations.</p>
+        </div>
+        <div class="imagine-card">
+          <div class="imagine-emoji">🌍</div>
+          <p>That is the control Prokip is built to give African businesses.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES / VISIBILITY -->
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section-header fade-up">
+        <div class="section-label">👁️ Full Visibility</div>
+        <h2>Prokip Helps You See What Is Really Happening</h2>
+        <p>An all-in-one business management system for African businesses that want better control over sales, inventory, accounting, customers, staff, branches, purchases, expenses, and reports.</p>
+      </div>
+      <div class="vis-grid fade-up">
+        <div class="vis-card">
+          <div class="vis-icon">🧾</div>
+          <h3>Sales Tracking</h3>
+          <p>See what was sold, who sold it, and when. Every transaction is recorded with full accountability.</p>
+        </div>
+        <div class="vis-card">
+          <div class="vis-icon">📦</div>
+          <h3>Stock & Inventory</h3>
+          <p>Know what is in stock, what is missing, who moved stock, and when to restock — across all locations.</p>
+        </div>
+        <div class="vis-card">
+          <div class="vis-icon">👤</div>
+          <h3>Staff Accountability</h3>
+          <p>Track who gave discounts, who handled returns, who processed payments, and all staff activities.</p>
+        </div>
+        <div class="vis-card">
+          <div class="vis-icon">💳</div>
+          <h3>Expenses & Profit</h3>
+          <p>Monitor what expenses are reducing your profit and understand whether your business is truly profitable.</p>
+        </div>
+        <div class="vis-card">
+          <div class="vis-icon">🏦</div>
+          <h3>Customer & Supplier Records</h3>
+          <p>Track who owes you money, manage supplier records, purchases, and payment balances clearly.</p>
+        </div>
+        <div class="vis-card">
+          <div class="vis-icon">🏬</div>
+          <h3>Multi-Branch View</h3>
+          <p>See which branch is doing well and manage all your locations from one connected place.</p>
+        </div>
+        <div class="vis-card">
+          <div class="vis-icon">📑</div>
+          <h3>Accounting & Reports</h3>
+          <p>Get the records your accountant needs. Cleaner data for reporting, planning, and legal tax compliance.</p>
+        </div>
+        <div class="vis-card">
+          <div class="vis-icon">🏷️</div>
+          <h3>Product Performance</h3>
+          <p>Know which products or services are performing best so you can make smarter business decisions.</p>
+        </div>
+        <div class="vis-card">
+          <div class="vis-icon">📱</div>
+          <h3>Remote Monitoring</h3>
+          <p>Check your phone or dashboard and see what is happening in your business — from anywhere.</p>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 48px;" class="fade-up">
+        <p style="font-size: 18px; color: var(--text-secondary); max-width: 600px; margin: 0 auto 24px;">When you can see clearly, you can manage better. And when you manage better, you can grow with less stress.</p>
+        <a href="#book" class="btn-primary">📅 Book My Free Demo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIDDEN COST -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-up">
+        <div class="section-label" style="color: rgba(255,255,255,0.6);">💸 The Hidden Cost</div>
+        <h2>The Hidden Cost of Running Without a Proper System</h2>
+        <p>Every day your business runs without full visibility, small losses may continue.</p>
+      </div>
+      <div class="cost-grid fade-up">
+        <div class="cost-card">
+          <span class="cost-emoji">🏷️</span>
+          <p>A staff member gives unauthorized discounts.</p>
+        </div>
+        <div class="cost-card">
+          <span class="cost-emoji">📦</span>
+          <p>Stock leaves without proper record.</p>
+        </div>
+        <div class="cost-card">
+          <span class="cost-emoji">📝</span>
+          <p>A customer debt is forgotten.</p>
+        </div>
+        <div class="cost-card">
+          <span class="cost-emoji">🧮</span>
+          <p>Expenses are recorded wrongly.</p>
+        </div>
+        <div class="cost-card">
+          <span class="cost-emoji">⏰</span>
+          <p>A product sells fast, but you restock too late.</p>
+        </div>
+        <div class="cost-card">
+          <span class="cost-emoji">💰</span>
+          <p>Cash enters the business, but profit is still unclear.</p>
+        </div>
+        <div class="cost-card">
+          <span class="cost-emoji">🏬</span>
+          <p>One branch performs poorly, but you only discover weeks later.</p>
+        </div>
+        <div class="cost-card">
+          <span class="cost-emoji">📊</span>
+          <p>Your accountant struggles because records are scattered.</p>
+        </div>
+      </div>
+      <div class="cost-bottom fade-up">
+        <h3>These problems cost you money, time, and peace of mind.</h3>
+        <p>A business that depends only on the owner cannot scale properly. Prokip helps you build a system that gives you visibility, accountability, and control.</p>
+        <a href="#book" class="btn-primary">🛡️ Build a Better System Today</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMAGINE -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header fade-up">
+        <div class="section-label">✨ Imagine This</div>
+        <h2>Imagine Running Your Business Like This</h2>
+      </div>
+      <div class="imagine-grid fade-up">
+        <div class="imagine-card">
+          <div class="imagine-emoji">🚶</div>
+          <p>Leaving your shop and still knowing today's sales.</p>
+        </div>
+        <div class="imagine-card">
+          <div class="imagine-emoji">📱</div>
+          <p>Checking your phone and seeing what is happening in your business right now.</p>
+        </div>
+        <div class="imagine-card">
+          <div class="imagine-emoji">📦</div>
+          <p>Knowing what is in stock before calling your staff.</p>
+        </div>
+        <div class="imagine-card">
+          <div class="imagine-emoji">🔎</div>
+          <p>Seeing who is responsible for every sale, return, discount, or stock adjustment.</p>
+        </div>
+        <div class="imagine-card">
+          <div class="imagine-emoji">🔒</div>
+          <p>Reducing theft because everyone knows activities are being tracked.</p>
+        </div>
+        <div class="imagine-card">
+          <div class="imagine-emoji">⚡</div>
+          <p>Catching mistakes early before they become serious losses.</p>
+        </div>
+        <div class="imagine-card">
+          <div class="imagine-emoji">💹</div>
+          <p>Knowing whether you are making real profit, not just recording high sales.</p>
+        </div>
+        <div class="imagine-card">
+          <div class="imagine-emoji">🏢</div>
+          <p>Seeing all your branches from one place and giving your accountant cleaner records.</p>
+        </div>
+        <div class="imagine-card" style="grid-column: 1 / -1; text-align: center;">
+          <div class="imagine-emoji" style="margin: 0 auto;">🌟</div>
+          <p>Finally having time to think about growth instead of sitting inside the business every day. <strong>That is what Prokip helps make possible.</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMO DETAILS -->
+  <section class="section" id="demo">
+    <div class="container">
+      <div class="section-header fade-up">
+        <div class="section-label">🎯 Your Free Demo</div>
+        <h2>What You Will See During Your Free Demo</h2>
+        <p>This is not a general software presentation. Your demo is focused on your business, your challenges, and your growth goals.</p>
+      </div>
+      <div class="demo-list fade-up">
+        <div class="demo-item">
+          <div class="demo-check">✓</div>
+          <p>Reduce employee theft, mistakes, and unauthorized activities.</p>
+        </div>
+        <div class="demo-item">
+          <div class="demo-check">✓</div>
+          <p>Know what is happening in your business even when you are not physically there.</p>
+        </div>
+        <div class="demo-item">
+          <div class="demo-check">✓</div>
+          <p>Track who is responsible for every sale, payment, discount, return, and stock movement.</p>
+        </div>
+        <div class="demo-item">
+          <div class="demo-check">✓</div>
+          <p>Know exactly what you have in stock across your shop, warehouse, or branches.</p>
+        </div>
+        <div class="demo-item">
+          <div class="demo-check">✓</div>
+          <p>Understand whether your business is truly making profit or just making sales.</p>
+        </div>
+        <div class="demo-item">
+          <div class="demo-check">✓</div>
+          <p>Monitor expenses and identify where money is being wasted.</p>
+        </div>
+        <div class="demo-item">
+          <div class="demo-check">✓</div>
+          <p>Manage customer balances, supplier records, purchases, and payments more clearly.</p>
+        </div>
+        <div class="demo-item">
+          <div class="demo-check">✓</div>
+          <p>See branch performance from one place.</p>
+        </div>
+        <div class="demo-item">
+          <div class="demo-check">✓</div>
+          <p>Reduce your dependence on phone calls, notebooks, spreadsheets, and verbal reports.</p>
+        </div>
+        <div class="demo-item">
+          <div class="demo-check">✓</div>
+          <p>Keep cleaner financial records for accounting, reporting, and legal tax compliance.</p>
+        </div>
+        <div class="demo-item" style="grid-column: 1 / -1;">
+          <div class="demo-check">✓</div>
+          <p>Build a stronger system that allows your business to grow without depending on you 24/7.</p>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 16px;" class="fade-up">
+        <p style="font-size: 16px; color: var(--text-secondary); margin-bottom: 4px;">Whether you are running one location or many, the demo will be tailored to your business.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY BOOK -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header fade-up">
+        <div class="section-label">🤔 Why Business Owners Book This Demo</div>
+        <h2>Business Owners Book This Demo Because They Are Tired of Guessing</h2>
+      </div>
+      <div class="why-grid fade-up">
+        <div class="why-card">
+          <div class="why-emoji">💰</div>
+          <h3>Know Where Money Goes</h3>
+          <p>They want to know where their money is going and trust their numbers.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-emoji">🛡️</div>
+          <h3>Reduce Losses</h3>
+          <p>They want to reduce staff-related losses and stop depending on manual records.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-emoji">🚀</div>
+          <h3>Expand With Confidence</h3>
+          <p>They want to expand without losing control and manage without sitting there all day.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-emoji">😌</div>
+          <h3>Peace of Mind</h3>
+          <p>They want peace of mind and to finally answer: "How can Prokip help my own business?"</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO TESTIMONIALS -->
+  <section class="section" id="testimonials">
+    <div class="container">
+      <div class="section-header fade-up">
+        <div class="section-label">🎬 Video Testimonials</div>
+        <h2>Hear From Business Owners Using Prokip</h2>
+      </div>
+      <div class="video-grid fade-up">
+        <div class="video-card">
+          <div class="video-placeholder" id="video-1">
+            <div class="video-play">▶</div>
+            <span class="video-label">Watch Testimonial</span>
+          </div>
+          <div class="video-info">
+            <div class="role">🏪 Retail Business Owner</div>
+            <p>"How Prokip helped us track sales, stock, and staff activities better."</p>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-placeholder" id="video-2">
+            <div class="video-play">▶</div>
+            <span class="video-label">Watch Testimonial</span>
+          </div>
+          <div class="video-info">
+            <div class="role">🛒 Supermarket Owner</div>
+            <p>"How Prokip helped us reduce stock losses and improve accountability."</p>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-placeholder" id="video-3">
+            <div class="video-play">▶</div>
+            <span class="video-label">Watch Testimonial</span>
+          </div>
+          <div class="video-info">
+            <div class="role">🏢 Multi-Branch Business Owner</div>
+            <p>"How Prokip made it easier to manage different branches from one place."</p>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-placeholder" id="video-4">
+            <div class="video-play">▶</div>
+            <span class="video-label">Watch Testimonial</span>
+          </div>
+          <div class="video-info">
+            <div class="role">🌍 Growing African Business Owner</div>
+            <p>"How Prokip gave us better visibility and reduced the stress of daily operations."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEXT TESTIMONIALS -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header fade-up">
+        <div class="section-label">💬 What Business Owners Are Saying</div>
+        <h2>Real Stories From Real Business Owners</h2>
+      </div>
+      <div class="testimonial-grid fade-up">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <div class="testimonial-quote">"</div>
+          <h4>"I no longer have to call every time to know what is happening."</h4>
+          <p>Before Prokip, I had to depend on staff updates before knowing sales and stock. Now I can see reports clearly and make decisions faster.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">👤</div>
+            <div>
+              <div class="testimonial-name">Business Owner</div>
+              <div class="testimonial-role">Retail Business</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <div class="testimonial-quote">"</div>
+          <h4>"It helped us know who was responsible."</h4>
+          <p>When stock was missing before, everybody had an explanation. With Prokip, sales, returns, and stock movements are tracked, so accountability improved.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">👤</div>
+            <div>
+              <div class="testimonial-name">Supermarket Owner</div>
+              <div class="testimonial-role">Supermarket</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <div class="testimonial-quote">"</div>
+          <h4>"I can now leave the business and still monitor things."</h4>
+          <p>Before, I was always inside the shop because I did not fully trust the process. Prokip gave me more visibility, and that reduced a lot of stress.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">👤</div>
+            <div>
+              <div class="testimonial-name">Retail & Distribution Owner</div>
+              <div class="testimonial-role">Retail & Distribution</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <div class="testimonial-quote">"</div>
+          <h4>"Our records became cleaner."</h4>
+          <p>Expenses, sales, purchases, and reports are now easier to track. It has helped our accountant and made business planning easier.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">👤</div>
+            <div>
+              <div class="testimonial-name">Wholesale Owner</div>
+              <div class="testimonial-role">Wholesale Business</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner">
+    <div class="container fade-up">
+      <h2>If Your Business Depends on You 24/7, It Is Time to Build a Better System</h2>
+      <p>A business should give you freedom, not trap you. With the right system, you can have more control, better records, stronger accountability, and more confidence to grow.</p>
+      <a href="#book" class="btn-primary">📅 Book Your Free Demo Today</a>
+      <div class="cta-features">
+        <div class="cta-feature"><span class="emoji">✅</span> Free today</div>
+        <div class="cta-feature"><span class="emoji">🤝</span> No obligation</div>
+        <div class="cta-feature"><span class="emoji">🎯</span> Tailored to your business</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING FORM -->
+  <section class="form-section" id="book">
+    <div class="container">
+      <div class="form-wrapper fade-up">
+        <div class="form-header">
+          <div class="section-label">📋 Book Your Demo</div>
+          <h2>Book Your Free Personalized Demo Today</h2>
+          <p>Free today. No obligation. Tailored to your business.</p>
+        </div>
+        <form id="bookingForm" onsubmit="handleSubmit(event)">
+          <div class="form-grid">
+            <div class="form-group">
+              <label><span class="emoji">👤</span> Full Name</label>
+              <input type="text" name="fullName" placeholder="Enter your full name" required>
+            </div>
+            <div class="form-group">
+              <label><span class="emoji">🏢</span> Business Name</label>
+              <input type="text" name="businessName" placeholder="Enter your business name" required>
+            </div>
+            <div class="form-group">
+              <label><span class="emoji">📞</span> Phone Number</label>
+              <input type="tel" name="phone" placeholder="+234 800 000 0000" required>
+            </div>
+            <div class="form-group">
+              <label><span class="emoji">📧</span> Email Address</label>
+              <input type="email" name="email" placeholder="you@business.com" required>
+            </div>
+            <div class="form-group">
+              <label><span class="emoji">🏪</span> Type of Business</label>
+              <select name="businessType" required>
+                <option value="" disabled selected>Select your business type</option>
+                <option>Retail / Shop</option>
+                <option>Supermarket</option>
+                <option>Pharmacy</option>
+                <option>Restaurant / Food Business</option>
+                <option>Wholesale / Distribution</option>
+                <option>Manufacturing</option>
+                <option>Service Business</option>
+                <option>School / Education</option>
+                <option>Hotel / Hospitality</option>
+                <option>Multi-Branch Operation</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label><span class="emoji">📍</span> Number of Locations or Branches</label>
+              <select name="locations" required>
+                <option value="" disabled selected>Select number</option>
+                <option>1 location</option>
+                <option>2-3 locations</option>
+                <option>4-5 locations</option>
+                <option>6-10 locations</option>
+                <option>More than 10 locations</option>
+              </select>
+            </div>
+            <div class="form-group full">
+              <label><span class="emoji">🎯</span> Biggest Challenge Right Now</label>
+              <textarea name="challenge" placeholder="Tell us what challenge you are facing in your business right now..." rows="3"></textarea>
+            </div>
+            <div class="form-group">
+              <label><span class="emoji">📅</span> Preferred Demo Date</label>
+              <input type="date" name="demoDate" required>
+            </div>
+            <div class="form-group">
+              <label><span class="emoji">🕐</span> Preferred Demo Time</label>
+              <select name="demoTime" required>
+                <option value="" disabled selected>Select preferred time</option>
+                <option>9:00 AM</option>
+                <option>10:00 AM</option>
+                <option>11:00 AM</option>
+                <option>12:00 PM</option>
+                <option>1:00 PM</option>
+                <option>2:00 PM</option>
+                <option>3:00 PM</option>
+                <option>4:00 PM</option>
+                <option>5:00 PM</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="btn-primary">🚀 Show Me How to Run My Business with Less Stress</button>
+          </div>
+          <p class="form-note">🔒 Your information is secure and will only be used to schedule your demo.</p>
+        </form>
+        <div id="formSuccess" style="display: none; text-align: center; padding: 40px 0;">
+          <div style="font-size: 64px; margin-bottom: 16px;">🎉</div>
+          <h3 style="font-size: 24px; font-weight: 700; color: var(--primary); margin-bottom: 12px;">Demo Booked Successfully!</h3>
+          <p style="font-size: 16px; color: var(--text-secondary); line-height: 1.7;">Thank you! Our team will reach out to confirm your personalized demo. We look forward to showing you how Prokip can help your business grow.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-logo">Pro<span>kip</span></div>
+      <p>Track staff actions, stock movement, expenses, and profit.<br>Built for African businesses that want better control.</p>
+      <ul class="footer-links">
+        <li><a href="#problem">The Problem</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#book">Book Demo</a></li>
+      </ul>
+      <p style="margin-top: 32px; font-size: 13px;">© 2026 Prokip. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll effect
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Mobile menu
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navLinks = document.getElementById('navLinks');
+    mobileToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Form submission
+    function handleSubmit(e) {
+      e.preventDefault();
+      document.getElementById('bookingForm').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+      // Scroll to success message
+      document.getElementById('formSuccess').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    // Set min date for demo date picker
+    const dateInput = document.querySelector('input[name="demoDate"]');
+    if (dateInput) {
+      const today = new Date();
+      const tomorrow = new Date(today);
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      dateInput.min = tomorrow.toISOString().split('T')[0];
+    }
+  </script>
+</body>
+</html>
