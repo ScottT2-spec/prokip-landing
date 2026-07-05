@@ -13,24 +13,24 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --primary: #1B2E4A;
-      --primary-light: #2A4470;
-      --accent: #E8792B;
-      --accent-hover: #D4691F;
-      --accent-light: #FFF3EB;
-      --surface: #F7F8FA;
-      --surface-alt: #EEF1F6;
-      --text: #1A1D23;
-      --text-secondary: #5A6175;
-      --text-light: #8891A5;
+      --primary: #0F1C32;
+      --primary-light: #1B2B4B;
+      --accent: #F5B731;
+      --accent-hover: #E0A520;
+      --accent-light: #FDF8EC;
+      --surface: #F8FAFC;
+      --surface-alt: #F1F5F9;
+      --text: #0F1C32;
+      --text-secondary: #475569;
+      --text-light: #94A3B8;
       --white: #FFFFFF;
-      --border: #E2E5EB;
+      --border: #E2E8F0;
       --success: #1A9E5C;
       --danger: #E5484D;
-      --shadow-sm: 0 1px 3px rgba(27,46,74,0.06);
-      --shadow-md: 0 4px 16px rgba(27,46,74,0.08);
-      --shadow-lg: 0 8px 32px rgba(27,46,74,0.12);
-      --shadow-xl: 0 16px 48px rgba(27,46,74,0.16);
+      --shadow-sm: 0 1px 3px rgba(15,28,50,0.06);
+      --shadow-md: 0 4px 16px rgba(15,28,50,0.08);
+      --shadow-lg: 0 8px 32px rgba(15,28,50,0.12);
+      --shadow-xl: 0 16px 48px rgba(15,28,50,0.16);
       --radius: 12px;
       --radius-lg: 20px;
       --radius-xl: 28px;
@@ -104,7 +104,7 @@
     .nav-links a:hover { color: var(--primary); }
     .nav-cta {
       background: var(--accent);
-      color: var(--white) !important;
+      color: var(--primary) !important;
       padding: 10px 24px;
       border-radius: 10px;
       font-weight: 600 !important;
@@ -132,7 +132,7 @@
     /* ── HERO ── */
     .hero {
       padding: 140px 0 100px;
-      background: linear-gradient(165deg, #F0F4FA 0%, #FFFFFF 40%, #FFF8F3 100%);
+      background: linear-gradient(165deg, #F0F4FA 0%, #FFFFFF 40%, #FEFCF3 100%);
       position: relative;
       overflow: hidden;
     }
@@ -143,7 +143,7 @@
       right: -200px;
       width: 600px;
       height: 600px;
-      background: radial-gradient(circle, rgba(232,121,43,0.06) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(245,183,49,0.06) 0%, transparent 70%);
       border-radius: 50%;
     }
     .hero-grid {
@@ -199,7 +199,7 @@
       align-items: center;
       gap: 10px;
       background: var(--accent);
-      color: var(--white);
+      color: var(--primary);
       padding: 16px 32px;
       border-radius: var(--radius);
       font-size: 16px;
@@ -208,14 +208,14 @@
       border: none;
       cursor: pointer;
       transition: all 0.25s;
-      box-shadow: 0 4px 16px rgba(232,121,43,0.3);
+      box-shadow: 0 4px 16px rgba(245,183,49,0.3);
     }
     .btn-primary:hover {
       background: var(--accent-hover);
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(232,121,43,0.35);
+      box-shadow: 0 8px 24px rgba(245,183,49,0.35);
     }
-    .btn-primary .lucide { color: var(--white); }
+    .btn-primary .lucide { color: var(--primary); }
     .btn-secondary {
       display: inline-flex;
       align-items: center;
@@ -438,7 +438,7 @@
       align-items: center;
       justify-content: center;
     }
-    .pain-icon .lucide { color: var(--danger); }
+    .pain-icon .lucide { color: #DC2626; }
     .pain-visual {
       background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
       border-radius: var(--radius-xl);
@@ -843,12 +843,12 @@
       gap: 4px;
       margin-bottom: 16px;
     }
-    .stars .lucide { color: #F59E0B; fill: #F59E0B; }
+    .stars .lucide { color: var(--accent); fill: var(--accent); }
 
     /* ── CTA BANNER ── */
     .cta-banner {
       padding: 100px 0;
-      background: linear-gradient(135deg, var(--primary) 0%, #0F1D33 100%);
+      background: linear-gradient(135deg, var(--primary) 0%, #0A1222 100%);
       color: var(--white);
       text-align: center;
       position: relative;
@@ -862,7 +862,7 @@
       transform: translateX(-50%);
       width: 800px;
       height: 800px;
-      background: radial-gradient(circle, rgba(232,121,43,0.08) 0%, transparent 60%);
+      background: radial-gradient(circle, rgba(245,183,49,0.08) 0%, transparent 60%);
       border-radius: 50%;
     }
     .cta-banner h2 {
@@ -970,7 +970,7 @@
     .form-group select:focus,
     .form-group textarea:focus {
       border-color: var(--accent);
-      box-shadow: 0 0 0 4px rgba(232,121,43,0.1);
+      box-shadow: 0 0 0 4px rgba(245,183,49,0.1);
     }
     .form-group textarea { resize: vertical; min-height: 100px; }
     .form-group input::placeholder,
