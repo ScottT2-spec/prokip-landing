@@ -85,14 +85,14 @@
       height: 72px;
     }
     .logo {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-weight: 800;
-      font-size: 26px;
-      color: var(--primary);
+      display: flex;
+      align-items: center;
       text-decoration: none;
-      letter-spacing: -0.5px;
     }
-    .logo span { color: var(--accent); }
+    .logo img {
+      height: 38px;
+      width: auto;
+    }
     .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
     .nav-links a {
       color: var(--text-secondary);
@@ -984,13 +984,13 @@
       text-align: center;
     }
     .footer-logo {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-weight: 800;
-      font-size: 24px;
-      color: var(--white);
       margin-bottom: 12px;
     }
-    .footer-logo span { color: var(--accent); }
+    .footer-logo img {
+      height: 34px;
+      width: auto;
+      filter: brightness(0) invert(1);
+    }
     .footer p { font-size: 14px; line-height: 1.7; }
     .footer-links {
       display: flex;
@@ -1075,7 +1075,7 @@
   <!-- NAV -->
   <nav class="nav" id="nav">
     <div class="container nav-inner">
-      <a href="#" class="logo">Pro<span>kip</span></a>
+      <a href="#" class="logo"><img src="prokip-logo.png" alt="Prokip"></a>
       <ul class="nav-links" id="navLinks">
         <li><a href="#problem">The Problem</a></li>
         <li><a href="#features">Features</a></li>
@@ -1731,7 +1731,7 @@
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
-      <div class="footer-logo">Pro<span>kip</span></div>
+      <div class="footer-logo"><img src="prokip-logo.png" alt="Prokip"></div>
       <p>Track staff actions, stock movement, expenses, and profit.<br>Built for African businesses that want better control.</p>
       <ul class="footer-links">
         <li><a href="#problem">The Problem</a></li>
